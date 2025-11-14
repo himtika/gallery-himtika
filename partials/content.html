@@ -40,7 +40,7 @@
     <!-- ========== HERO SECTION ========== -->
     <section
       id="home"
-      class="relative min-h-[70vh] md:min-h-[40vh] flex items-center bg-[#1e2039] overflow-hidden"
+      class="relative min-h-[15vh] md:min-h-[40vh] flex items-center bg-[#1e2039] overflow-hidden"
     >
       <div class="container mx-auto px-6 py-16 text-center max-w-7xl">
         <!-- Background Particles -->
@@ -68,62 +68,111 @@
       </div>
     </section>
 
-    <section id="galeri" class="bg-[#1e2039] py-20 px-6 md:px-12 lg:px-20">
-      <div class="container mx-auto max-w-7xl">
+    <section id="galeri" class="bg-[#1e2039] py-16 px-4 sm:px-8 lg:px-20">
+      <div class="container mx-auto max-w-7xl relative">
         <!-- Background Particles -->
-        <div id="particles-contact" class="absolute inset-0 z-0"></div>
+        <div id="particles-galery" class="absolute inset-0 z-0"></div>
 
+        <!-- ===== FILTER BUTTONS ===== -->
         <div
           id="gallery-filters"
-          class="flex justify-center gap-2 sm:gap-4 mb-12 flex-wrap"
+          class="relative z-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 mb-10 sm:mb-12"
         >
           <button
             data-filter="all"
-            class="filter-btn golden-gradient-bg text-gray-900 font-bold py-2 px-6 rounded-full transition-all duration-300 shadow-lg shadow-yellow-500/20"
+            class="filter-btn golden-gradient-bg text-gray-900 font-bold py-2 px-6 rounded-full transition-all duration-300 shadow-lg shadow-yellow-500/20 min-w-[150px] text-center"
           >
             Semua
           </button>
+
           <button
             data-filter="rapat"
-            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300"
+            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300 min-w-[150px] text-center"
           >
             Rapat & Koordinasi
           </button>
+
           <button
             data-filter="agenda"
-            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300"
+            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300 min-w-[150px] text-center"
           >
             Agenda Inti & Evaluasi
           </button>
+
           <button
             data-filter="kaderisasi"
-            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300"
+            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300 min-w-[150px] text-center"
           >
             Kaderisasi & Regenerasi
           </button>
+
           <button
             data-filter="bonding"
-            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300"
+            class="filter-btn bg-transparent border-2 border-gray-700 text-gray-400 font-bold py-2 px-6 rounded-full hover:bg-gray-800 hover:text-white hover:border-gray-600 transition-all duration-300 min-w-[150px] text-center"
           >
             Bonding & Kekeluargaan
           </button>
         </div>
 
+        <!-- ===== GRID GALERI ===== -->
         <div
           id="gallery-grid"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          class="relative z-10 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
         ></div>
 
-        <div class="text-center mt-16">
+        <!-- ===== MUAT LEBIH BANYAK ===== -->
+        <div class="relative z-10 mt-12 flex justify-center">
           <button
             id="load-more-btn"
-            class="block mx-auto border-2 border-gray-600 text-gray-300 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:bg-gray-700 hover:border-gray-500"
+            class="border-2 border-gray-600 text-gray-300 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:bg-gray-700 hover:border-gray-500"
           >
             Muat Lebih Banyak
           </button>
         </div>
       </div>
     </section>
+
+    <!-- ======= POPUP MODAL GALERI ======= -->
+    <div
+      id="gallery-modal"
+      class="fixed inset-0 bg-black/80 hidden z-[9999] flex items-center justify-center p-5"
+    >
+      <div
+        class="relative bg-[#1e2039] rounded-2xl p-6 max-w-3xl w-full shadow-xl"
+      >
+        <!-- Tombol Close -->
+        <button
+          id="close-modal"
+          class="absolute top-3 right-3 text-white text-2xl hover:text-gray-300"
+        >
+          &times;
+        </button>
+
+        <!-- Gambar Besar -->
+        <img id="modal-image" class="w-full h-80 object-contain rounded-lg" />
+
+        <!-- Informasi -->
+        <h2 id="modal-title" class="text-2xl font-bold mt-4"></h2>
+        <div id="modal-badges" class="flex flex-wrap mt-2"></div>
+
+        <!-- Navigasi -->
+        <div class="flex justify-between mt-6">
+          <button
+            id="prev-btn"
+            class="px-6 py-2 border border-gray-500 rounded-lg hover:bg-gray-700"
+          >
+            <i class="fas fa-arrow-left"></i>
+          </button>
+
+          <button
+            id="next-btn"
+            class="px-6 py-2 border border-gray-500 rounded-lg hover:bg-gray-700"
+          >
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="../assets/js/gparticles.min.js"></script>
     <script src="../assets/js/gparticles-app.js"></script>

@@ -122,6 +122,6 @@ if (document.getElementById('particles-hero')) {
 }
 
 // Inisialisasi particles untuk contact section
-if (document.getElementById('particles-contact')) {
-  particlesJS('particles-contact', particlesConfig);
+if (document.getElementById('particles-galery')) {
+  particlesJS('particles-galery', particlesConfig);
 }
